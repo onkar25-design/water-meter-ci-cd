@@ -47,9 +47,6 @@ jobs:
       - name: Build project
         run: CI=false npm run build
 
-      - name: List build directory contents
-        run: ls -alh build
-
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -70,9 +67,6 @@ jobs:
         with:
           name: build-artifacts
           path: build
-
-      - name: List downloaded build directory contents
-        run: ls -alh build
 
       - name: Deploy to Netlify
         run: netlify deploy --prod --dir=build
