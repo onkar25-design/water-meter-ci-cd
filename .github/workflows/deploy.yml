@@ -24,34 +24,11 @@ jobs:
       - name: Run ESLint
         run: npx eslint src/
 
+      #- name: Run tests
+       # run: npm test
+
       - name: Build project
         run: CI=false npm run build
-
-      - name: List build directory contents
-        run: ls -alh build
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-artifacts
-          path: build
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: build-artifacts
-          path: build
-
-      - name: List downloaded build directory contents
-        run: ls -alh build
 
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
@@ -60,4 +37,4 @@ jobs:
         run: netlify deploy --prod --dir=build
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}         
