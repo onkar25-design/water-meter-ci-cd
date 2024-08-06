@@ -28,9 +28,9 @@ jobs:
         run: npm run build
 
       - name: Deploy to Netlify
-        uses: netlify/actions/cli@master
+        uses: netlify/actions/cli@v3.7.1  # Use a specific version tag for stability
         with:
-          args: deploy --dir=dist --prod
+          args: deploy --dir=build --prod  # Ensure this matches your build output directory
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
