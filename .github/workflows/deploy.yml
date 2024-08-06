@@ -30,9 +30,6 @@ jobs:
       - name: Build project
         run: CI=false npm run build
 
-      - name: List root directory contents
-        run: ls -alh
-
       - name: List build directory contents
         run: ls -alh dist || ls -alh build
 
