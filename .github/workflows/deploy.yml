@@ -31,7 +31,7 @@ jobs:
         run: CI=false npm run build
 
       - name: List build directory contents
-        run: ls -alh dist || ls -alh build
+        run: ls -alh build
 
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
